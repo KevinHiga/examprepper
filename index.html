@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exam Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Google Cloud Exam Simulator</h1>
+
+  <div class="menu">
+    <button onclick="startPractice()">📘 Practice Mode</button>
+    <button onclick="startExam()">📝 Exam Mode</button>
+    <button onclick="startCurrentExam()">📋 Examen Actual</button>
+  </div>
+
+  <div id="timer"></div>
+
+  <div id="quiz-container"></div>
+
+  <button id="nextBtn" onclick="handleCurrentExamNext()" style="display:none;">
+    Siguiente
+  </button>
+
+  <button id="finishBtn" onclick="finishExam()" style="display:none;">
+    Finalizar Examen
+  </button>
+
+  <div id="result"></div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
