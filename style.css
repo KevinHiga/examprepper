@@ -95,9 +95,16 @@ button{
   border:1px solid #374151;
 }
 
+.current-exam-actions{
+  margin:0 0 16px;
+  text-align:center;
+}
+
 #nextBtn{
   display:block;
-  margin:20px auto 0;
+  margin:0 auto;
+  width:100%;
+  max-width:320px;
 }
 
 .option.correct{

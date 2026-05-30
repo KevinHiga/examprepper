@@ -3980,11 +3980,21 @@ function revealPracticeResult(div, q, selected){
     div.appendChild(feedback);
 }
 
+function placeCurrentExamNextButton(target){
+    const nextBtn = document.getElementById("nextBtn");
+    if(!target){
+        document.getElementById("nextBtn-home").appendChild(nextBtn);
+        return;
+    }
+    target.appendChild(nextBtn);
+}
+
 function resetSharedUI(){
     clearInterval(timer);
     document.getElementById("timer").innerHTML = "";
     document.getElementById("finishBtn").style.display = "none";
     document.getElementById("nextBtn").style.display = "none";
+    placeCurrentExamNextButton(null);
     document.getElementById("result").innerHTML = "";
     currentExamMode = false;
 }
@@ -4246,6 +4256,15 @@ function revealCurrentQuestionResult(){
     const feedback = document.getElementById("current-feedback");
     feedback.innerHTML =
         `<div class="feedback-box"><strong>Respuesta correcta:</strong><br>${q.answer.replaceAll(" | ", "<br>")}</div>`;
+
+    let revealNav = document.getElementById("current-exam-actions-reveal");
+    if(!revealNav){
+        revealNav = document.createElement("div");
+        revealNav.id = "current-exam-actions-reveal";
+        revealNav.className = "current-exam-actions";
+        feedback.parentNode.insertBefore(revealNav, feedback);
+    }
+    placeCurrentExamNextButton(revealNav);
 }
 
 function renderCurrentQuestion(){
@@ -4269,6 +4288,7 @@ function renderCurrentQuestion(){
         <h3>${q.question}</h3>
         ${multiHint}
         <div id="current-options"></div>
+        <div id="current-exam-actions" class="current-exam-actions"></div>
         <div id="current-feedback"></div>
     `;
 
@@ -4285,6 +4305,9 @@ function renderCurrentQuestion(){
     });
 
     container.appendChild(div);
+
+    placeCurrentExamNextButton(div.querySelector("#current-exam-actions"));
+    document.getElementById("nextBtn").style.display = "block";
 }
 
 function finishCurrentExam(){
