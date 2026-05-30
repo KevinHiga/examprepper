@@ -4273,6 +4273,7 @@ function renderCurrentQuestion(){
     const total = currentExamQuestions.length;
     const requiredCount = getRequiredSelectionCount(q);
 
+    placeCurrentExamNextButton(null);
     container.innerHTML = "";
 
     const div = document.createElement("div");
@@ -4318,6 +4319,7 @@ function finishCurrentExam(){
     const percent = total ? ((finalScore / total) * 100).toFixed(2) : "0.00";
 
     currentExamMode = false;
+    placeCurrentExamNextButton(null);
     document.getElementById("nextBtn").style.display = "none";
     document.getElementById("quiz-container").innerHTML = "";
     document.getElementById("result").innerHTML = `
